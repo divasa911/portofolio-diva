@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Muhammad Diva Saputra</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0f0f23, #1a1a2e, #16213e);
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+        a {
+            text-decoration: none;
+            color: #00d4ff;
+        }
+        a:hover {
+            color: #00aaff;
+        }
+        section {
+            padding: 100px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1, h2, h3 {
+            margin-bottom: 20px;
+        }
+        p {
+            line-height: 1.6;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 15, 35, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+        nav li {
+            margin: 0 20px;
+        }
+        nav a {
+            color: #e0e0e0;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #00d4ff;
+        }
+
+        /* Hero Section */
+        #hero {
+            background: url('https://via.placeholder.com/1920x1080/0f0f23/00d4ff?text=Hero+Background') no-repeat center center/cover;
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+        #hero h1 {
+            font-size: 3em;
+            color: #00d4ff;
+        }
+        #hero p {
+            font-size: 1.2em;
+        }
+        .hero-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: #00d4ff;
+            margin: 20px auto;
+            animation: bounce 3s infinite;
+        }
+
+        /* About Section */
+        #about {
+            background: linear-gradient(45deg, #16213e, #0f0f23);
+        }
+
+        /* Portfolio Section */
+        #portfolio {
+            background: linear-gradient(90deg, #1a1a2e, #16213e);
+        }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            width: 100%;
+        }
+        .portfolio-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .portfolio-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.5);
+        }
+        .portfolio-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .portfolio-item h3 {
+            margin-top: 10px;
+        }
+
+        /* Skills Section */
+        #skills {
+            background: linear-gradient(135deg, #0f0f23, #1a1a2e);
+        }
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .skill {
+            width: 200px;
+            text-align: center;
+        }
+        .skill-bar {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            height: 20px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+        .skill-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00d4ff, #00aaff);
+            width: 0;
+            animation: fill 2s ease-in-out forwards;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: linear-gradient(45deg, #16213e, #0f0f23);
+        }
+        form {
+            max-width: 600px;
+            width: 100%;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+        }
+        button {
+            padding: 10px 20px;
+            background: #00d4ff;
+            border: none;
+            border-radius: 5px;
+            color: #0f0f23;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #00aaff;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f0f23;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        @keyframes fill {
+            to { width: var(--fill); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul { flex-direction: column; }
+            section { padding: 50px 10px; }
+            #hero h1 { font-size: 2em; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="hero">
+        <div class="hero-img"></div>
+        <h1>Muhammad Diva Saputra</h1>
+        <p>Web Developer | Designer | Innovator</p>
+        <p>Selamat datang di portofolio saya. Saya adalah seorang pengembang web yang passionate dengan fokus pada desain yang menarik dan fungsionalitas yang canggih.</p>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Halo! Saya Muhammad Diva Saputra, seorang web developer dengan pengalaman dalam HTML, CSS, JavaScript, dan framework modern seperti React dan Node.js. Saya suka menciptakan website yang tidak hanya indah tetapi juga interaktif dan responsif. Dengan latar belakang biru gelap ini, saya ingin menunjukkan kreativitas saya dalam desain.</p>
+    </section>
+
+    <section id="portfolio">
+        <h2>My Portfolio</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="https://via.placeholder.com/300x200/00d4ff/0f0f23?text=Project+1" alt="Project 1">
+                <h3>E-Commerce Website</h3>
+                <p>Website e-commerce responsif dengan integrasi pembayaran. Menggunakan React dan Stripe.</p>
+                <a href="#">View Details</a>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://via.placeholder.com/300x200/00aaff/0f0f23?text=Project+2" alt="Project 2">
+                <h3>Portfolio Site</h3>
+                <p>Website portofolio pribadi dengan animasi dan efek parallax. Dibangun dengan HTML, CSS, dan JS.</p>
+                <a href="#">View Details</a>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://via.placeholder.com/300x200/0088ff/0f0f23?text=Project+3" alt="Project 3">
+                <h3>Mobile App UI</h3>
+                <p>Desain UI untuk aplikasi mobile dengan fokus pada UX. Menggunakan Figma dan Adobe XD.</p>
+                <a href="#">View Details</a>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://via.placeholder.com/300x200/0066ff/0f0f23?text=Project+4" alt="Project 4">
+                <h3>Blog Platform</h3>
+                <p>Platform blog dengan CMS kustom. Menggunakan Node.js dan MongoDB.</p>
+                <a href="#">View Details</a>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://via.placeholder.com/300x200/0044ff/0f0f23?text=Project+5" alt="Project 5">
+                <h3>Game Website</h3>
+                <p>Website untuk game indie dengan animasi canvas. Menggunakan JavaScript dan WebGL.</p>
+                <a href="#">View Details</a>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://via.placeholder.com/300x200/0022ff/0f0f23?text=Project+6" alt="Project 6">
+                <h3>Dashboard Admin</h3>
+                <p>Dashboard admin dengan grafik real-time. Menggunakan Vue.js dan Chart.js.</p>
+                <a href="#">View Details</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>My Skills</h2>
+        <div class="skills-container">
+            <div class="skill">
+                <h3>HTML/CSS</h3>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="--fill: 95%"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <h3>JavaScript</h3>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="--fill: 90%"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <h3>React</h3>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="--fill: 85%"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <h3>Node.js</h3>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="--fill: 80%"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <h3>UI/UX Design</h3>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="--fill: 88%"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <h3>Python</h3>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="--fill: 75%"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form id="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Muhammad Diva Saputra. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form validation and submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            this.reset();
+        });
+
+        // Parallax effect on scroll
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            document.querySelector('#hero').style.transform = `translateY(${rate}px)`;
+        });
+
+        // Animate skill bars on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelector('.skill-fill').style.animationPlayState = 'running';
+                }
+            });
+        });
+        document.querySelectorAll('.skill').forEach(skill => observer.observe(skill));
+
+        // Particle effect (simple canvas)
+        const canvas = document.createElement('canvas');
+        canvas.style.position = 'fixed';
+        canvas.style.top = '0';
+        canvas.style.left = '0';
+        canvas.style.zIndex = '-1';
+        document.body.appendChild(canvas);
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particles = [];
+        for (let i = 0; i < 100; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: Math.random() * 2 - 1,
+                vy: Math.random() * 2 - 1,
+                size: Math.random() * 3 + 1
+            });
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.x += p.vx;
+                p.y += p.vy;
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fillStyle = '#00d4ff';
+                ctx.fill();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // Resize canvas on window resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>
